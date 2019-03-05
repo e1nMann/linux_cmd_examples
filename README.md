@@ -129,3 +129,40 @@ xargs -a wp-ovh.txt -P15 python darkwp.py -u
 ## kill "\r" from file names
 rename 's/\%0D$//' /opt/lampp/htdocs/tmp/test/kiff/*\%0D
 ```
+## ncftp
+```sh
+## ncftp client full download
+wget -O nc.tar.gz "ftp://ftp.ncftp.com/ncftp/binaries/ncftp-3.2.5-linux-x86_64-glibc2.3-export.tar.gz" && tar -zxvf nc.tar.gz && rm nc.tar.gz && mv ncftp-3.2.5 nc && ./nc/bin/ncftpput --help
+
+### ncftpput upload
+./ncftpput -u 123789 -p 654789 -P 21 -R "ftp.uploaded.net" "./" "./ubuntu.iso"
+./ncftpput -u anonymous -p anonymous -P 21 -R "localhost" "/bin/.log/backup" "*gz"
+
+### ncftpput datein im ordner ansprechen und uploaden
+./ncftpput -u anonymous -p anonymous -P 21 -R "localhost" "/folder/" "./folder/*.*"
+./ncftpput -u anonymous -p anonymous -P 21 -R "127.0.0.1" "/folder/" "./folder/*"
+
+### ncftpput upload with continue, recrusiv and error log
+./nc/bin/ncftpput -u anonymous -p anonymous -P 21 -e nc_error.log -z -R "REMOTEHOST" "/remotefolder/" "./localfolder/" >> /dev/null &
+
+### ncftpput multi upload with find and xargs
+find ./FAQready/* -type d -maxdepth 1 -print0 | xargs -0 -i -n 1 -P 3 ./ncftp/bin/ncftpput -e nc_error.log -u p0rn -p master -P 2221 -z -R "192.0.0.1" "/XXX/" {}
+find ./ftp/javaftpd/home/* -type d -maxdepth 1 -print0 | xargs -0 -i -n 1 -P 2 ./ncftp/bin/ncftpput -e nc_error_dvc.log -u p0rn -p master -P 2221 -z -R "127.0.0.1" "/XXX/" {}
+find ./ftp/javaftpd/home/* -type d -maxdepth 1 -print0 | xargs -0 -i -n 1 -P 2 ./ncftp/bin/ncftpput -e nc_error_faq.log -u p0rn -p master -P 2221 -z -R "127.0.0.1" "/XXX/" {}
+
+### ncftpput same but no find, use -a for file-list.txt
+xargs -a todoup.txt -i -n 1 -P 3 ./nc/bin/ncftpput -e nc_error.log -u anonymous -p anonymous -P 21 -z -R REMOTEHOST "/REMOTEFOLDER/" "{}"
+#### ncftpput ^ todo.txt sampel:
+"./html/"
+"./Dokumente/"
+"./Downloads/"
+
+## ncftpput datein suchen und auf ul.to uppen
+find ../../home/Wii/ -name "*.rar" -exec ./ncftpput -e error.log -u 123789 -p pass123 -P 21 ftp.uploaded.net "/" {} \; > /dev/null &
+
+### ncftpls ncftpget xargs multi downloader
+../nc/bin/ncftpls -1 "ftp://USERPASSHOSTPORT/XXX/" | xargs -i -n 1 -P 3 ../nc/bin/ncftpget -R "ftp://USERPASSHOSTPORT/XXX/{}" > /dev/null &
+
+## ftp curl upload
+curl -T backup.sql.gz -u anonymous:anonymous ftp://127.0.0.1/bin/.log/
+```
