@@ -123,3 +123,15 @@ find . -name '*.py' -print0 | xargs -0 -i grep -H -n -w -i "argparse" {} >> find
 curl http://pts-mini-gpl.googlecode.com/svn/trunk/staticpython/d.sh | bash /dev/stdin python2.7-static
 wget https://github.com/elyase/docker/raw/master/staticpython/python2.7-static
 ```
+
+## xargs
+```sh
+## xargs with wget (4 threads)
+xargs -a downloadlist -n 1 -P 4 wget
+
+## xargs python wordpress bruter start command
+xargs --arg-file=wp.txt -i -n 1 -P 25 python wpbf.py -nps -t 2 {} > /dev/null &
+xargs -a wp2.txt -n 1 -P 25 python wpbf.py -w wordlist.txt -t 5 -nf -nps -mu 3 > /dev/null &
+xargs -a wp3.txt -i -n 1 -P 25 python wpbf.py -w wordlist.txt -t 2 -nf -nps -mu 3 {} > /dev/null &
+xargs -a wp-ovh.txt -P15 python darkwp.py -u
+```
