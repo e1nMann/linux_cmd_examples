@@ -85,3 +85,41 @@ tar -cvf /opt/lampp/htdocs/webface.tar /opt/lampp/htdocs/tmp
 tar -cvzf pop3.tar.gz datei1 datei2 ordner blabla
 ```
 [Archive_unter_Linux_(tar,_gz,_bz2,_zip)](https://www.thomas-krenn.com/de/wiki/Archive_unter_Linux_(tar,_gz,_bz2,_zip))
+
+
+###FlowChart
+
+```flow
+st=>start: Login
+op=>operation: Login operation
+cond=>condition: Successful Yes or No?
+e=>end: To admin
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
+
+## search and found
+```sh
+## suche, datein inhalte recrusiv
+grep -w -i "_SERVER\['REMOTE_ADDR'\]" -r ./*
+grep -w -i "eval(" -r ./*
+grep -w -i "16codezBZqw3Uc2tCcrxZ3q62SFoKGjJFq" -r ./*
+
+## suchen und ersetzten in mehreren datein
+find ./test/plugin -type f -exec sed -i 's/from bs4 import \*/from thirdparty.beautifulsoup import \*/g' {} \;
+﻿
+
+## extrem suche
+find $(pwd) -name "*.php" -print0 |xargs -0 -i -n 1 -P 4 grep -H -n -w -i "SEARCHSTRING" {}
+find $(pwd) -name "*.php" -print0 |xargs -0 -i -n 1 -P 2 grep -H -n -w -i "SCRIPTNAME" {}
+find . -name '*.py' -print0 | xargs -0 -i grep -H -n -w -i "argparse" {} >> find.txt
+```
+
+## python
+```sh
+# download python static
+curl http://pts-mini-gpl.googlecode.com/svn/trunk/staticpython/d.sh | bash /dev/stdin python2.7-static
+wget https://github.com/elyase/docker/raw/master/staticpython/python2.7-static
+```
