@@ -87,19 +87,6 @@ tar -cvzf pop3.tar.gz datei1 datei2 ordner blabla
 [Archive_unter_Linux_(tar,_gz,_bz2,_zip)](https://www.thomas-krenn.com/de/wiki/Archive_unter_Linux_(tar,_gz,_bz2,_zip))
 
 
-###FlowChart
-
-```flow
-st=>start: Login
-op=>operation: Login operation
-cond=>condition: Successful Yes or No?
-e=>end: To admin
-
-st->op->cond
-cond(yes)->e
-cond(no)->op
-```
-
 ## search and found
 ```sh
 ## suche, datein inhalte recrusiv
@@ -134,4 +121,11 @@ xargs --arg-file=wp.txt -i -n 1 -P 25 python wpbf.py -nps -t 2 {} > /dev/null &
 xargs -a wp2.txt -n 1 -P 25 python wpbf.py -w wordlist.txt -t 5 -nf -nps -mu 3 > /dev/null &
 xargs -a wp3.txt -i -n 1 -P 25 python wpbf.py -w wordlist.txt -t 2 -nf -nps -mu 3 {} > /dev/null &
 xargs -a wp-ovh.txt -P15 python darkwp.py -u
+```
+
+## files
+```sh
+## um ungewünschte zeichen los zu bekommen "\r"
+## kill "\r" from file names
+rename 's/\%0D$//' /opt/lampp/htdocs/tmp/test/kiff/*\%0D
 ```
