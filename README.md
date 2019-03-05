@@ -2,8 +2,8 @@
 list of usefull linux commando line examples
 
 ## index
-1. system
-2. wget
+1. [system](#system)
+2. [wget](#wget)
 
 ## system
 update ubunut, debian, linuxmint etc...
