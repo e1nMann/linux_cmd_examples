@@ -3,7 +3,14 @@ list of usefull linux commando line examples
 
 ## index
 1. [system](#system)
-2. [wget](#wget)
+2. [wget](#wget-and-curl)
+3. [archiving utilitys](#archiving-utilitys)
+4. [search and found](#search-and-found)
+5. [python](#python)
+6. [xargs](#xargs)
+7. [files](#files) work with files
+8. [ncftp](#ncftp) and other ftp clients
+9. pass
 
 ## system
 update ubunut, debian, linuxmint etc...
