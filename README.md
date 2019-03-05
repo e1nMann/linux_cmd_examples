@@ -10,7 +10,8 @@ list of usefull linux commando line examples
 6. [xargs](#xargs)
 7. [files](#files) work with files
 8. [ncftp](#ncftp) and other ftp clients
-9. pass
+9. [GitHub](#github)
+10. [MySQL](#mysql)
 
 ## system
 update ubunut, debian, linuxmint etc...
@@ -173,3 +174,45 @@ find ../../home/Wii/ -name "*.rar" -exec ./ncftpput -e error.log -u 123789 -p pa
 ## ftp curl upload
 curl -T backup.sql.gz -u anonymous:anonymous ftp://127.0.0.1/bin/.log/
 ```
+
+## GitHub
+```sh
+touch README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/e1nMann/linux_cmd_examples.git
+git push -u origin master
+
+git clone https://github.com/e1nMann/linux_cmd_examples.git
+```
+
+## MySql
+```sh
+## mysql import
+mysql -u username -p -h localhost DATA-BASE-NAME < data.sql
+mysql -u root --password=root -h localhost <<< "SHOW_DATABASE"
+mysql -u root --password=root -h localhost <<< "SHOW DATABASES;"
+mysql -u root -p -h localhost minerd_porxy < db.sql
+
+### zeigt user columns an
+mysql -u root --password=root -h localhost <<< "SELECT table_schema, table_name, column_name FROM information_schema.columns WHERE table_schema != 'mysql' AND table_schema != 'information_schema' AND table_schema != 'sys' AND table_schema != 'performance_schema'" |grep user
+mysql -u root --password=root -h localhost <<< "SELECT table_schema, table_name FROM information_schema.columns WHERE column_name LIKE '%user%';"
+
+### mysql export (backup)
+mysqldump -u root --password=root --all-databases > sicherung.sql
+mysqldump -u root -p --all-databases > sicherung.sql
+mysqldump -u root -p Baila > sicherung.sql
+mysqldump -u root --password=pw123 blabla rangs > getRangs.sql
+mysqldump --opt --user=BENUTZERNAME --password=PASSWORT --host=HOSTNAME --database DATENBANKNAME TABELLENNAME1 TABELLENNAME2 usw...| gzip -9 > ./backup.sql.gz
+mysqldump --opt --user=root --password=test123 --host=localhost --database usr_web12_2 phpbb_users | gzip -9 > ./backup.sql.gz
+
+mysqldump --opt --user=FFWsql1 --password=joshua --host=localhost --database joomladb | gzip -9 > ./backup.sql.gz
+mysqldump -u root1 --password=password123 --host=1and1.com --database db504367683 | gzip -9 > ./backup.sql.gz
+
+## download install adminer
+wget -O adminer.php https://www.adminer.org/static/download/4.2.5/adminer-4.2.5.php
+wget -O adminer.php https://www.adminer.org/latest[-mysql][-en].php
+
+```
+[mysql-sql-injection-cheat-sheet](http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet)
