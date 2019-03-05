@@ -69,7 +69,6 @@ gzip -d backup.sql.gz
 tar cfzv archiv.tar.gz inhalt1 inhalt2 inhalt3
 ### archiv.tar.bz2
 tar cfvj archiv.tar.bz2 inhalt1 inhalt2
-[Archive_unter_Linux_(tar,_gz,_bz2,_zip)](https://www.thomas-krenn.com/de/wiki/Archive_unter_Linux_(tar,_gz,_bz2,_zip))
 
 ## bz2 entpacken mit tar
 tar xfvj tinyproxy-1.8.3.tar.bz2
@@ -85,3 +84,4 @@ tar -cvf /opt/lampp/htdocs/webface.tar /opt/lampp/htdocs/tmp
 
 tar -cvzf pop3.tar.gz datei1 datei2 ordner blabla
 ```
+[Archive_unter_Linux_(tar,_gz,_bz2,_zip)](https://www.thomas-krenn.com/de/wiki/Archive_unter_Linux_(tar,_gz,_bz2,_zip))
