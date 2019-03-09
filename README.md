@@ -60,7 +60,7 @@ wget -r -c -nH -nd ftp://wii:games@localhost:4681 > /dev/null &
 ## unrar für unix
 wget http://www.rarlab.com/rar/rarlinux-3.6.0.tar.gz && tar -zxvf rarlinux-3.6.0.tar.gz && mv rar rar2 && cp ./rar2/rar_static rar && rm rarlinux-3.6.0.tar.gz && rm -r rar2
 ## copy download befehle
-wget bwc.php http://rarlab.com/rar/rarlinux-5.0.0.tar.gz
+wget rar.tar.gz http://rarlab.com/rar/rarlinux-5.0.0.tar.gz
 curl -O http://rarlab.com/rar/rarlinux-5.0.0.tar.gz
 var_dump(copy("http://rarlab.com/rar/rarlinux-5.0.0.tar.gz", "rarlinux-5.0.0.tar.gz"));
 ### unrar entpacken
@@ -91,6 +91,9 @@ tar xfvz example.tar
 tar -cvf /opt/lampp/htdocs/webface.tar /opt/lampp/htdocs/tmp
 
 tar -cvzf pop3.tar.gz datei1 datei2 ordner blabla
+
+## combine find with tar.gz
+find . -type f -print0 | tar -czvf backup.tar.gz --null -T -
 ```
 [Archive_unter_Linux_(tar,_gz,_bz2,_zip)](https://www.thomas-krenn.com/de/wiki/Archive_unter_Linux_(tar,_gz,_bz2,_zip))
 
