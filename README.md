@@ -100,13 +100,15 @@ tar -cvzf pop3.tar.gz datei1 datei2 ordner blabla
 ## suche, datein inhalte recrusiv
 grep -w -i "_SERVER\['REMOTE_ADDR'\]" -r ./*
 grep -w -i "eval(" -r ./*
-grep -w -i "16codezBZqw3Uc2tCcrxZ3q62SFoKGjJFq" -r ./*
+
+## search BTC address
+grep -wiE "^[13][a-km-zA-HJ-NP-Z0-9]{26,33}$" -r ./*
 
 ## suchen und ersetzten in mehreren datein
 find ./test/plugin -type f -exec sed -i 's/from bs4 import \*/from thirdparty.beautifulsoup import \*/g' {} \;
 ﻿
 
-## extrem suche
+## to combine find with xargs (extrem suche)
 find $(pwd) -name "*.php" -print0 |xargs -0 -i -n 1 -P 4 grep -H -n -w -i "SEARCHSTRING" {}
 find $(pwd) -name "*.php" -print0 |xargs -0 -i -n 1 -P 2 grep -H -n -w -i "SCRIPTNAME" {}
 find . -name '*.py' -print0 | xargs -0 -i grep -H -n -w -i "argparse" {} >> find.txt
