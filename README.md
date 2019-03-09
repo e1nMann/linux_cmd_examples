@@ -110,6 +110,11 @@ find ./test/plugin -type f -exec sed -i 's/from bs4 import \*/from thirdparty.be
 find $(pwd) -name "*.php" -print0 |xargs -0 -i -n 1 -P 4 grep -H -n -w -i "SEARCHSTRING" {}
 find $(pwd) -name "*.php" -print0 |xargs -0 -i -n 1 -P 2 grep -H -n -w -i "SCRIPTNAME" {}
 find . -name '*.py' -print0 | xargs -0 -i grep -H -n -w -i "argparse" {} >> find.txt
+
+## search files without ending (suche nach datein ohne dateiende|dateityp)
+find -type f |grep -viE "\.[a-z0-9]{1,5}"
+## and add it! (und füge ein dateiende hinzu)
+find -type f |grep -viE "\.[a-z0-9]{1,5}" |xargs -i -P4 mv "{}" "{}.jpg"
 ```
 
 ## python
