@@ -120,6 +120,9 @@ find . -name '*.py' -print0 | xargs -0 -i grep -H -n -w -i "argparse" {} >> find
 find -type f |grep -viE "\.[a-z0-9]{1,5}"
 ## and add it! (und füge ein dateiende hinzu)
 find -type f |grep -viE "\.[a-z0-9]{1,5}" |xargs -i -P4 mv "{}" "{}.jpg"
+
+## search and found with regex iregex and !
+find -iregex "\(.*log.*\|.*result.*\)$" ! -iregex "\(.*info.log\|.*debug.log\|.*error.log\)" -type f
 ```
 
 ## python
