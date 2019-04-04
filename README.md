@@ -94,6 +94,9 @@ tar -cvzf pop3.tar.gz datei1 datei2 ordner blabla
 
 ## combine find with tar.gz
 find . -type f -print0 | tar -czvf backup.tar.gz --null -T -
+
+## only list files from a tar.gz archiv
+tar -ztvf archiv.tar.gz
 ```
 [Archive_unter_Linux_(tar,_gz,_bz2,_zip)](https://www.thomas-krenn.com/de/wiki/Archive_unter_Linux_(tar,_gz,_bz2,_zip))
 
